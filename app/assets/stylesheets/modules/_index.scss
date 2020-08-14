@@ -3,7 +3,9 @@
   outline: 1px dashed black;
   background-color: rgba(137, 207, 235, 0.2);
 }
-
+@mixin text-shadow-black{
+  text-shadow: 0 0 3px black;
+}
 
 
 // アプリ紹介
@@ -26,14 +28,14 @@
   &__subtitle{
     font-size: 60px;
     color: #fff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    @include text-shadow-black;
   }
   &__text{
     font-size: 18px;
     line-height: 1.77778;
     margin: 16px 0 0 0;
     color: #fff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    @include text-shadow-black;
   }
   &__btn{
     display: flex;
@@ -141,7 +143,7 @@
   }
   &--shadow{
     color: #fff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    @include text-shadow-black;
   }
   &__btn{
     display: flex;
@@ -226,8 +228,15 @@
   }
 }
 .productsBox {
+  width: 880px;
+  margin: 0 auto;
+  .itemsMore{
+    text-align: right;
+  }
   .boxhead{
     text-align: center;
+    width: fit-content;
+    margin: 0 auto;
     a{
       font-size: 24px;
       text-decoration: none;
@@ -238,12 +247,21 @@
     margin: 0px auto;
     padding: 26px 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    width: 880px;
     .boxlist{
       width: 220px;
+      border: 2px solid #f8f8f8;
       .listimage{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 150px;
         margin: 0px;
         font-size: 0px;
+        background-color: white;
         position: relative;
         // ItemにSOLDを表示
         .items-box-sold{
@@ -270,8 +288,11 @@
           }
         }
       }
-      img{
-        width: 100%;
+      img{    
+        width:auto;
+        height:auto;
+        max-width:100%;
+        max-height:100%;
       }
       .listbody{
         background-color: white;
@@ -320,7 +341,7 @@
   }
   &--shadow{
     color: #fff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    @include text-shadow-black;
   }
   &__btn{
     display: flex;

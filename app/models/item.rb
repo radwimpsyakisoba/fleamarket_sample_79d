@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
   enum delivery_cost:{"送料込み（出品者負担）": 1, "着払い（購入者負担）": 2}
 
-  [:name, :explanation, :quality, :delivery_cost, :prefecture_id, :period_id, :price, :user_id].each do |v|
+  [:name, :explanation, :quality, :delivery_cost, :prefecture_id, :period_id, :price, :user_id, :images].each do |v|
     validates v, presence: true
   end
   validates :name, length: { maximum: 50 }
@@ -21,9 +21,9 @@ class Item < ApplicationRecord
  
   def self.search(search)
     if search
-      Item.where('name LIKE(?)', "%#{search}%")
+      Item.where('name LIKE(?)', "%#{search}%").order("created_at DESC")
     else
-      Item.all
+      Item.all.order("created_at DESC")
     end
   end
 end

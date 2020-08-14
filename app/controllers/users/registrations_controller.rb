@@ -33,10 +33,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
     redirect_to root_path
   end
-
   protected
 
   def address_params
-    params.require(:address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number)
+    params.require(:address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :last_name, :first_name, :last_name_read, :first_name_read)
   end
 end
